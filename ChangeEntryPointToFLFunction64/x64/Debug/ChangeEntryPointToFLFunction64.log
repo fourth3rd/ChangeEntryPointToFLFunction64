@@ -1,2 +1,9 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(459,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (ChangeEntryPointToFLFunction( x64 ).vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  sw.cpp
+C:\Users\정찬호\source\repos\ChangeEntryPointToFLFunction64\ChangeEntryPointToFLFunction64\sw.cpp(74,55): warning C4312: '형식 캐스트': 'unsigned int'에서 더 큰 'int *'(으)로의 변환입니다.
+C:\Users\정찬호\source\repos\ChangeEntryPointToFLFunction64\ChangeEntryPointToFLFunction64\sw.cpp(117,90): warning C4312: '형식 캐스트': 'DWORD'에서 더 큰 'int32_t *'(으)로의 변환입니다.
+C:\Users\정찬호\source\repos\ChangeEntryPointToFLFunction64\ChangeEntryPointToFLFunction64\sw.cpp(118,75): warning C4312: '형식 캐스트': 'DWORD'에서 더 큰 'int32_t *'(으)로의 변환입니다.
+C:\Users\정찬호\source\repos\ChangeEntryPointToFLFunction64\ChangeEntryPointToFLFunction64\sw.cpp(119,75): warning C4312: '형식 캐스트': 'int'에서 더 큰 'WORD *'(으)로의 변환입니다.
+C:\Users\정찬호\source\repos\ChangeEntryPointToFLFunction64\ChangeEntryPointToFLFunction64\sw.cpp(145,38): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\정찬호\source\repos\ChangeEntryPointToFLFunction64\ChangeEntryPointToFLFunction64\sw.cpp(374,40): warning C4267: '초기화 중': 'size_t'에서 'int32_t'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   ChangeEntryPointToFLFunction64.vcxproj -> C:\Users\정찬호\source\repos\ChangeEntryPointToFLFunction64\x64\Debug\ChangeEntryPointToFLFunction64.exe

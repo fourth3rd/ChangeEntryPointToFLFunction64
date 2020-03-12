@@ -22,9 +22,10 @@ typedef struct Section
 	int TempOffset;
 }Section;
 
+
 int main()
 {
-	FILE* fp = fopen("MainFunctionOriginal.exe", "rb");
+	FILE* fp = fopen("DerivedMFCDllOriginal.dll", "rb");
 
 	if(fp)
 	{
@@ -39,7 +40,7 @@ int main()
 		fread(buf, stSize, 1, fp);
 
 		fclose(fp);
-		fp = fopen(R"(MainProgram.exe)", "wb");
+		fp = fopen(R"(DerivedMFCDll.dll)", "wb");
 		fseek(fp, 0, SEEK_SET);
 
 		PIMAGE_DOS_HEADER pDosH;
@@ -191,39 +192,61 @@ int main()
 		}
 		int32_t i32stSizeCnt = 0;
 
-		buf[stSize + i32stSizeCnt++] = '\x60';
+		buf[stSize + i32stSizeCnt++] = '\x50';
+		buf[stSize + i32stSizeCnt++] = '\x53';
+		buf[stSize + i32stSizeCnt++] = '\x51';
+		buf[stSize + i32stSizeCnt++] = '\x52';
+		buf[stSize + i32stSizeCnt++] = '\x57';
+		buf[stSize + i32stSizeCnt++] = '\x56';
+		buf[stSize + i32stSizeCnt++] = '\x41';
+		buf[stSize + i32stSizeCnt++] = '\x50';
+		buf[stSize + i32stSizeCnt++] = '\x41';
+		buf[stSize + i32stSizeCnt++] = '\x51';
+		buf[stSize + i32stSizeCnt++] = '\x41';
+		buf[stSize + i32stSizeCnt++] = '\x52';
+		buf[stSize + i32stSizeCnt++] = '\x41';
+		buf[stSize + i32stSizeCnt++] = '\x53';
+		buf[stSize + i32stSizeCnt++] = '\x41';
+		buf[stSize + i32stSizeCnt++] = '\x54';
+		buf[stSize + i32stSizeCnt++] = '\x41';
+		buf[stSize + i32stSizeCnt++] = '\x55';
+		buf[stSize + i32stSizeCnt++] = '\x41';
+		buf[stSize + i32stSizeCnt++] = '\x56';
+		buf[stSize + i32stSizeCnt++] = '\x41';
+		buf[stSize + i32stSizeCnt++] = '\x57';
+
 
 		if(bCheckIsDllorExe == true)
 		{
+			buf[stSize + i32stSizeCnt++] = '\x48';
 			buf[stSize + i32stSizeCnt++] = '\x8b';
-			buf[stSize + i32stSizeCnt++] = '\xc2';
+			buf[stSize + i32stSizeCnt++] = '\xc1';
 		}
 		else
 		{
-			buf[stSize + i32stSizeCnt++] = '\x64';
-			buf[stSize + i32stSizeCnt++] = '\xa1';
-			buf[stSize + i32stSizeCnt++] = '\x18';
-			buf[stSize + i32stSizeCnt++] = '\x0';
-
-			buf[stSize + i32stSizeCnt++] = '\x0';
-			buf[stSize + i32stSizeCnt++] = '\x0';
+			buf[stSize + i32stSizeCnt++] = '\x65';
+			buf[stSize + i32stSizeCnt++] = '\x48';
 			buf[stSize + i32stSizeCnt++] = '\x8b';
-			buf[stSize + i32stSizeCnt++] = '\x40';
-
+			buf[stSize + i32stSizeCnt++] = '\x04';
+			buf[stSize + i32stSizeCnt++] = '\x25';
 			buf[stSize + i32stSizeCnt++] = '\x30';
+			buf[stSize + i32stSizeCnt++] = '\x0';
+			buf[stSize + i32stSizeCnt++] = '\x0';
+			buf[stSize + i32stSizeCnt++] = '\x0';
+
+			buf[stSize + i32stSizeCnt++] = '\x48';
 			buf[stSize + i32stSizeCnt++] = '\x8b';
 			buf[stSize + i32stSizeCnt++] = '\x40';
-			buf[stSize + i32stSizeCnt++] = '\x0c';
+			buf[stSize + i32stSizeCnt++] = '\x60';
 
-			buf[stSize + i32stSizeCnt++] = '\x8d';
-			buf[stSize + i32stSizeCnt++] = '\x58';
-			buf[stSize + i32stSizeCnt++] = '\x0c';
+			buf[stSize + i32stSizeCnt++] = '\x48';
 			buf[stSize + i32stSizeCnt++] = '\x8b';
+			buf[stSize + i32stSizeCnt++] = '\x40';
+			buf[stSize + i32stSizeCnt++] = '\x10';
 
-			buf[stSize + i32stSizeCnt++] = '\x13';
+			buf[stSize + i32stSizeCnt++] = '\x48';
 			buf[stSize + i32stSizeCnt++] = '\x8b';
-			buf[stSize + i32stSizeCnt++] = '\x42';
-			buf[stSize + i32stSizeCnt++] = '\x18';
+			buf[stSize + i32stSizeCnt++] = '\xf0';
 		}
 	//	buf[stSize + i32stSizeCnt++] = '\x18';
 
@@ -232,9 +255,11 @@ int main()
 
 		memcpy((void*)&cChangeEntryPoint, (void*)&i32CheckChangeEntryPoint, 4);
 
+		buf[stSize + i32stSizeCnt++] = '\x48';
 		buf[stSize + i32stSizeCnt++] = '\x8b';
 		buf[stSize + i32stSizeCnt++] = '\xf0';
 
+		buf[stSize + i32stSizeCnt++] = '\x48';
 		buf[stSize + i32stSizeCnt++] = '\x81';
 		buf[stSize + i32stSizeCnt++] = '\xc6';
 
@@ -243,20 +268,26 @@ int main()
 		buf[stSize + i32stSizeCnt++] = cChangeEntryPoint[2];
 		buf[stSize + i32stSizeCnt++] = cChangeEntryPoint[3];
 
-
+		buf[stSize + i32stSizeCnt++] = '\x48';
 		buf[stSize + i32stSizeCnt++] = '\x8b';
 		buf[stSize + i32stSizeCnt++] = '\xfe';
 
+		buf[stSize + i32stSizeCnt++] = '\x48';
 		buf[stSize + i32stSizeCnt++] = '\x8b';
 		buf[stSize + i32stSizeCnt++] = '\x36';
 
+		buf[stSize + i32stSizeCnt++] = '\x48';
 		buf[stSize + i32stSizeCnt++] = '\x83';
 		buf[stSize + i32stSizeCnt++] = '\xfe';
-		buf[stSize + i32stSizeCnt++] = '\x01';
+		buf[stSize + i32stSizeCnt++] = '\x01';// cmp rsi,1
 
-		buf[stSize + i32stSizeCnt++] = '\xc6';
+		buf[stSize + i32stSizeCnt++] = '\x48';
+		buf[stSize + i32stSizeCnt++] = '\xc7';
 		buf[stSize + i32stSizeCnt++] = '\x07';
 		buf[stSize + i32stSizeCnt++] = '\x01';
+		buf[stSize + i32stSizeCnt++] = '\x00';
+		buf[stSize + i32stSizeCnt++] = '\x00';
+		buf[stSize + i32stSizeCnt++] = '\x00';
 
 		WORD dwMoveToDecode = 0x100 - i32stSizeCnt;//
 		WORD dwChangeMoveToDecode = dwMoveToDecode - 6;// -3;
@@ -273,7 +304,37 @@ int main()
 		buf[stSize + i32stSizeCnt++] = '\x00';
 		buf[stSize + i32stSizeCnt++] = '\x00';
 
-		buf[stSize + i32stSizeCnt++] = '\x61';
+		buf[stSize + i32stSizeCnt++] = '\x41';
+		buf[stSize + i32stSizeCnt++] = '\x5f';
+
+		buf[stSize + i32stSizeCnt++] = '\x41';
+		buf[stSize + i32stSizeCnt++] = '\x5e';
+
+		buf[stSize + i32stSizeCnt++] = '\x41';
+		buf[stSize + i32stSizeCnt++] = '\x5d';
+
+		buf[stSize + i32stSizeCnt++] = '\x41';
+		buf[stSize + i32stSizeCnt++] = '\x5c';
+
+		buf[stSize + i32stSizeCnt++] = '\x41';
+		buf[stSize + i32stSizeCnt++] = '\x5b';
+
+		buf[stSize + i32stSizeCnt++] = '\x41';
+		buf[stSize + i32stSizeCnt++] = '\x5a';
+
+		buf[stSize + i32stSizeCnt++] = '\x41';
+		buf[stSize + i32stSizeCnt++] = '\x59';
+
+		buf[stSize + i32stSizeCnt++] = '\x41';
+		buf[stSize + i32stSizeCnt++] = '\x58';
+
+		buf[stSize + i32stSizeCnt++] = '\x5e';
+		buf[stSize + i32stSizeCnt++] = '\x5f';
+		buf[stSize + i32stSizeCnt++] = '\x5a';
+		buf[stSize + i32stSizeCnt++] = '\x59';
+		buf[stSize + i32stSizeCnt++] = '\x5b';
+		buf[stSize + i32stSizeCnt++] = '\x58';
+
 
 		int32_t i32FLFuncionStart = i32stSizeCnt + FLSection.RVA;//
 		int32_t i32ChangeEntryPointToOriginal = i32EntryPoint - i32FLFuncionStart - 5;// -3;
@@ -342,56 +403,75 @@ int main()
 		buf[stSize + i32OffsetCnt++] = '\x42';
 		buf[stSize + i32OffsetCnt++] = '\x18';
 		*/
+		buf[stSize + i32OffsetCnt++] = '\x48';
 		buf[stSize + i32OffsetCnt++] = '\x8b';
 		buf[stSize + i32OffsetCnt++] = '\xd8';
+
+		buf[stSize + i32OffsetCnt++] = '\x48';
 		buf[stSize + i32OffsetCnt++] = '\x8b';
 		buf[stSize + i32OffsetCnt++] = '\xd0';
 
+		buf[stSize + i32OffsetCnt++] = '\x48';
 		buf[stSize + i32OffsetCnt++] = '\x81';
 		buf[stSize + i32OffsetCnt++] = '\xc2';
 		buf[stSize + i32OffsetCnt++] = cFileTextRva[0];
 		buf[stSize + i32OffsetCnt++] = cFileTextRva[1];
+		buf[stSize + i32OffsetCnt++] = '\x00';
+		buf[stSize + i32OffsetCnt++] = '\x00';
 
-		buf[stSize + i32OffsetCnt++] = '\x00';
-		buf[stSize + i32OffsetCnt++] = '\x00';
+
 		buf[stSize + i32OffsetCnt++] = '\x8b';
 		buf[stSize + i32OffsetCnt++] = '\x1a';
 
+		buf[stSize + i32OffsetCnt++] = '\x48';
 		buf[stSize + i32OffsetCnt++] = '\x83';
 		buf[stSize + i32OffsetCnt++] = '\xc2';
 		buf[stSize + i32OffsetCnt++] = '\x04';
 
 		buf[stSize + i32OffsetCnt++] = '\x8b';
-
 		buf[stSize + i32OffsetCnt++] = '\x0a';
+
+		buf[stSize + i32OffsetCnt++] = '\x48';
 		buf[stSize + i32OffsetCnt++] = '\x83';
 		buf[stSize + i32OffsetCnt++] = '\xc2';
 		buf[stSize + i32OffsetCnt++] = '\x04';
-
 
 		buf[stSize + i32OffsetCnt++] = '\x8b';
 		buf[stSize + i32OffsetCnt++] = '\x32';
+
+		buf[stSize + i32OffsetCnt++] = '\x48';
 		buf[stSize + i32OffsetCnt++] = '\x2b';
 		buf[stSize + i32OffsetCnt++] = '\xce';
 
+		buf[stSize + i32OffsetCnt++] = '\x48';
 		buf[stSize + i32OffsetCnt++] = '\x03';
 		buf[stSize + i32OffsetCnt++] = '\xd8';
+
+		buf[stSize + i32OffsetCnt++] = '\x48';
 		buf[stSize + i32OffsetCnt++] = '\x83';
 		buf[stSize + i32OffsetCnt++] = '\xc2';
 		buf[stSize + i32OffsetCnt++] = '\x10';
+
 		buf[stSize + i32OffsetCnt++] = '\xf6';
 		buf[stSize + i32OffsetCnt++] = '\x13';
+
+		buf[stSize + i32OffsetCnt++] = '\x48';
 		buf[stSize + i32OffsetCnt++] = '\x83';
 		buf[stSize + i32OffsetCnt++] = '\xc3';
 		buf[stSize + i32OffsetCnt++] = '\x01';
+
+		buf[stSize + i32OffsetCnt++] = '\x48';
 		buf[stSize + i32OffsetCnt++] = '\x83';
 		buf[stSize + i32OffsetCnt++] = '\xe9';
 		buf[stSize + i32OffsetCnt++] = '\x01';
+
+		buf[stSize + i32OffsetCnt++] = '\x48';
 		buf[stSize + i32OffsetCnt++] = '\x83';
 		buf[stSize + i32OffsetCnt++] = '\xf9';
 		buf[stSize + i32OffsetCnt++] = '\x00';
+
 		buf[stSize + i32OffsetCnt++] = '\x75';
-		buf[stSize + i32OffsetCnt++] = '\xf3';
+		buf[stSize + i32OffsetCnt++] = '\xf0';
 //		buf[stSize + i32OffsetCnt++] = '\x00';
 //		buf[stSize + i32OffsetCnt++] = '\x00';
 
@@ -467,43 +547,50 @@ int main()
 			int32_t i32FileRelocOffset = vctParseRelocation[i].second.second;
 			char cType = buf[i32FileRelocOffset] & 0xf;
 
+			buf[stSize + i32cnt] = '\x48';
+			buf[stSize + i32cnt + 1] = '\x8b';
+			buf[stSize + i32cnt + 2] = '\xd8';
 
-			buf[stSize + i32cnt] = '\x8b';
-			buf[stSize + i32cnt + 1] = '\xd8';
-			buf[stSize + i32cnt + 2] = '\x81';
-			buf[stSize + i32cnt + 3] = '\xc3';
-			buf[stSize + i32cnt + 4] = cInputData[0];
-			buf[stSize + i32cnt + 5] = cInputData[1];
-			buf[stSize + i32cnt + 6] = cInputData[2];
-			buf[stSize + i32cnt + 7] = cInputData[3];
+			buf[stSize + i32cnt + 3] = '\x48';
+			buf[stSize + i32cnt + 4] = '\x81';
+			buf[stSize + i32cnt + 5] = '\xc3';
+			buf[stSize + i32cnt + 6] = cInputData[0];
+			buf[stSize + i32cnt + 7] = cInputData[1];
+			buf[stSize + i32cnt + 8] = cInputData[2];
+			buf[stSize + i32cnt + 9] = cInputData[3];
 
-			buf[stSize + i32cnt + 8] = '\x8b';
-			buf[stSize + i32cnt + 9] = '\xf0';
-			buf[stSize + i32cnt + 10] = '\xc1';
-			buf[stSize + i32cnt + 11] = '\xee';
-			buf[stSize + i32cnt + 12] = '\x10';
+			buf[stSize + i32cnt + 10] = '\x48';
+			buf[stSize + i32cnt + 11] = '\x8b';
+			buf[stSize + i32cnt + 12] = '\xf0';
+
+			buf[stSize + i32cnt + 13] = '\x48';
+			buf[stSize + i32cnt + 14] = '\xc1';
+			buf[stSize + i32cnt + 15] = '\xee';
+			buf[stSize + i32cnt + 16] = '\x10';
 
 			if(cType != '\x00')
 			{
-				buf[stSize + i32cnt + 13] = '\x81';
-				buf[stSize + i32cnt + 14] = '\xc6';
-				buf[stSize + i32cnt + 15] = cType;
-				buf[stSize + i32cnt + 16] = '\x00';
-				buf[stSize + i32cnt + 17] = '\x00';
-				buf[stSize + i32cnt + 18] = '\x00';
-				buf[stSize + i32cnt + 19] = '\x3e';
-				buf[stSize + i32cnt + 20] = '\x66';
-				buf[stSize + i32cnt + 21] = '\x89';
-				buf[stSize + i32cnt + 22] = '\x33';
-				i32cnt += 23;
+				buf[stSize + i32cnt + 17] = '\x48';
+				buf[stSize + i32cnt + 18] = '\x81';
+				buf[stSize + i32cnt + 19] = '\xc6';
+				buf[stSize + i32cnt + 20] = cType;
+				buf[stSize + i32cnt + 21] = '\x00';
+				buf[stSize + i32cnt + 22] = '\x00';
+				buf[stSize + i32cnt + 23] = '\x00';
+
+				buf[stSize + i32cnt + 24] = '\x3e';
+				buf[stSize + i32cnt + 25] = '\x66';
+				buf[stSize + i32cnt + 26] = '\x89';
+				buf[stSize + i32cnt + 27] = '\x33';
+				i32cnt += 28;
 			}
 			else
 			{
-				buf[stSize + i32cnt + 13] = '\x3e';
-				buf[stSize + i32cnt + 14] = '\x66';
-				buf[stSize + i32cnt + 15] = '\x89';
-				buf[stSize + i32cnt + 16] = '\x33';
-				i32cnt += 17;
+				buf[stSize + i32cnt + 17] = '\x3e';
+				buf[stSize + i32cnt + 18] = '\x66';
+				buf[stSize + i32cnt + 19] = '\x89';
+				buf[stSize + i32cnt + 20] = '\x33';
+				i32cnt += 21;
 			}
 
 
@@ -541,7 +628,37 @@ int main()
 		buf[stSize + cnt++] = '\x61';*/
 
 
-		buf[stSize + i32cnt++] = '\x61';
+
+		buf[stSize + i32cnt++] = '\x41';
+		buf[stSize + i32cnt++] = '\x5f';
+
+		buf[stSize + i32cnt++] = '\x41';
+		buf[stSize + i32cnt++] = '\x5e';
+
+		buf[stSize + i32cnt++] = '\x41';
+		buf[stSize + i32cnt++] = '\x5d';
+
+		buf[stSize + i32cnt++] = '\x41';
+		buf[stSize + i32cnt++] = '\x5c';
+
+		buf[stSize + i32cnt++] = '\x41';
+		buf[stSize + i32cnt++] = '\x5b';
+
+		buf[stSize + i32cnt++] = '\x41';
+		buf[stSize + i32cnt++] = '\x5a';
+
+		buf[stSize + i32cnt++] = '\x41';
+		buf[stSize + i32cnt++] = '\x59';
+
+		buf[stSize + i32cnt++] = '\x41';
+		buf[stSize + i32cnt++] = '\x58';
+
+		buf[stSize + i32cnt++] = '\x5e';
+		buf[stSize + i32cnt++] = '\x5f';
+		buf[stSize + i32cnt++] = '\x5a';
+		buf[stSize + i32cnt++] = '\x59';
+		buf[stSize + i32cnt++] = '\x5b';
+		buf[stSize + i32cnt++] = '\x58';
 	/*
 		buf[stSize + cnt++] = '\x83';
 		buf[stSize + cnt++] = '\xec';
