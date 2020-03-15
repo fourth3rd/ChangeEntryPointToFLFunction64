@@ -1,2 +1,7 @@
-﻿     C:\Users\정찬호\source\repos\ChangeEntryPointToFLFunction64\x64\Debug\DerivedMFCDll64.lib 라이브러리 및 C:\Users\정찬호\source\repos\ChangeEntryPointToFLFunction64\x64\Debug\DerivedMFCDll64.exp 개체를 생성하고 있습니다.
+﻿  pch.cpp
+  CFLDialogTest.cpp
+  DerivedMFCDll64.cpp
+  코드를 생성하고 있습니다...
+  dllmain.cpp
+     C:\Users\정찬호\source\repos\ChangeEntryPointToFLFunction64\x64\Debug\DerivedMFCDll64.lib 라이브러리 및 C:\Users\정찬호\source\repos\ChangeEntryPointToFLFunction64\x64\Debug\DerivedMFCDll64.exp 개체를 생성하고 있습니다.
   DerivedMFCDll64.vcxproj -> C:\Users\정찬호\source\repos\ChangeEntryPointToFLFunction64\x64\Debug\DerivedMFCDll64.dll

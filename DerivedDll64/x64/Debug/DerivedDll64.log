@@ -1,2 +1,7 @@
-﻿     C:\Users\정찬호\source\repos\ChangeEntryPointToFLFunction64\x64\Debug\DerivedDll64.lib 라이브러리 및 C:\Users\정찬호\source\repos\ChangeEntryPointToFLFunction64\x64\Debug\DerivedDll64.exp 개체를 생성하고 있습니다.
-  DerivedDll64.vcxproj -> C:\Users\정찬호\source\repos\ChangeEntryPointToFLFunction64\x64\Debug\DerivedDll64.dll
+﻿  pch.cpp
+  BaseEx.cpp
+  BaseUsing.cpp
+  dllmain.cpp
+  DrivedDLLLib.cpp
+  코드를 생성하고 있습니다...
+LINK : fatal error LNK1104: '../x64/Debug/BaseDLL64.lib' 파일을 열 수 없습니다.

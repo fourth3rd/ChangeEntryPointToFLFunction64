@@ -1,3 +1,5 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(459,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (MainFunction( x64 ).vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  MainLib.cpp
   sw.cpp
-  MainFunction.vcxproj -> C:\Users\정찬호\source\repos\ChangeEntryPointToFLFunction64\x64\Debug\MainFunction64.exe
+  코드를 생성하고 있습니다...
+LINK : fatal error LNK1104: '../x64/Debug/DerivedDLL64.lib' 파일을 열 수 없습니다.

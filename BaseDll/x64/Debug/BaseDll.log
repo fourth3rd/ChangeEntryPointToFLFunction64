@@ -1,2 +1,6 @@
-﻿     C:\Users\정찬호\source\repos\ChangeEntryPointToFLFunction64\x64\Debug\BaseDll64.lib 라이브러리 및 C:\Users\정찬호\source\repos\ChangeEntryPointToFLFunction64\x64\Debug\BaseDll64.exp 개체를 생성하고 있습니다.
+﻿  pch.cpp
+  Base.cpp
+  dllmain.cpp
+  코드를 생성하고 있습니다...
+     C:\Users\정찬호\source\repos\ChangeEntryPointToFLFunction64\x64\Debug\BaseDll64.lib 라이브러리 및 C:\Users\정찬호\source\repos\ChangeEntryPointToFLFunction64\x64\Debug\BaseDll64.exp 개체를 생성하고 있습니다.
   BaseDll.vcxproj -> C:\Users\정찬호\source\repos\ChangeEntryPointToFLFunction64\x64\Debug\BaseDll64.dll
